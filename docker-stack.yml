@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  vet:
+    build: ./
+    image: vethnet/geth
+    volumes:
+      - "vet:/build/vet"
+      - "./.pwd:/build/.pwd"
+      - "/etc/localtime:/etc/localtime:ro"
+    restart: "always"
+    healthcheck:
+      test: ["CMD", "bash", "/build/healthcheck.sh"]
+      interval: 2m
+    ports:
+      - "30303:30303"
+      - "8545:8545"
+
+  netapis:
+    build: ./netapis
+    image: vethnet/netapis
+    restart: "on-failure:10"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+    env_file: .env
+    depends_on:
+      - vet
+
+volumes:
+  vet:
