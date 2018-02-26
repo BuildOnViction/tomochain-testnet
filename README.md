@@ -27,7 +27,7 @@ git clone https://github.com/TOMOCOIN/tomochain-testnet.git
 
 Enter `tomochain-testnet` directory, Create `.pwd` file
 ```
-cd VET && touch .pwd
+cd tomochain-testnet && touch .pwd
 ```
 
 Edit `.pwd` file and input the password for your ethereum address if you want.
