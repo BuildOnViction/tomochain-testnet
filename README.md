@@ -64,7 +64,7 @@ ERROR: Couldn't connect to Docker daemon at http+docker://localunixsocket - is i
 If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable.
 ```
 
-## How to get free Ethereum in this testnet?
+## How to get free TOMO in testnet?
 Input your addresst to the form: [https://faucet.tomocoin.io](http://faucet.tomocoin.io)
 
 ## How to use Metamask to connect Tomochain Testnet
