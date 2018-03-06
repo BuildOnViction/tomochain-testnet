@@ -1,4 +1,4 @@
-FROM golang:stretch
+FROM golang:1.9.4-stretch
 
 ENV GETH_VERSION=1.7.3
 WORKDIR /build
