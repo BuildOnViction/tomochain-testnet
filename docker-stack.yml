@@ -9,6 +9,7 @@ services:
       - "./.pwd:/build/.pwd"
       - "/etc/localtime:/etc/localtime:ro"
     restart: "always"
+    env_file: .env
     healthcheck:
       test: ["CMD", "bash", "/build/healthcheck.sh"]
       interval: 2m
