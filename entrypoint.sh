@@ -1,24 +1,34 @@
 #!/bin/bash
 
+if [ ! -d /build/tomochain/tomo/chaindata ]
+then
+  wallet=$(tomo account new --password /build/.pwd --datadir /build/tomochain | awk -v FS="({|})" '{print $2}')
+  if [[ -v FIRST_NODE ]]
+  then
+      sed "s/:wallet:/${wallet}/g" /build/tomochain.json > /build/genesis.json
+  fi
+  tomo --datadir /build/tomochain init /build/genesis.json
+else
+  wallet=$(tomo account list --datadir /build/tomochain| head -n 1 | awk -v FS="({|})" '{print $2}')
+fi
+
 input="/build/.bootnodes"
 bootnodes=""
 while IFS= read -r line
 do
-  if [ -z "${bootnodes}" ]
-  then
-    bootnodes=$line
-  else
-    bootnodes="${bootnodes},$line"
-  fi
+    if [ -z "${bootnodes}" ]
+    then
+        bootnodes=$line
+    else
+        bootnodes="${bootnodes},$line"
+    fi
 done < "$input"
-echo $bootnodes
 
-if [ ! -d /build/vet/geth/chaindata ]
-then
-  wallet=$(geth account new --password /build/.pwd --datadir /build/vet | awk -v FS="({|})" '{print $2}')
-  geth --datadir /build/vet init /build/genesis.json
-  geth --bootnodes ${bootnodes} --datadir /build/vet --networkid 40686 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --unlock "${wallet}" --password /build/.pwd --mine --gasprice "100000000" --targetgaslimit "42000000"
+echo FIRST_NODE is ${FIRST_NODE}
+if [[ -v FIRST_NODE ]]; then
+    echo Starting the first node ...
+    tomo --datadir /build/tomochain --networkid 89 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --unlock "${wallet}" --password /build/.pwd --mine --gasprice "1" --targetgaslimit "420000000"
 else
-  wallet=$(geth account list --datadir /build/vet| head -n 1 | awk -v FS="({|})" '{print $2}')
-  geth --bootnodes ${bootnodes} --datadir /build/vet --networkid 40686 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --unlock "${wallet}" --password /build/.pwd --mine --gasprice "100000000" --targetgaslimit "42000000"
+    echo Starting nodes with bootnodes $bootnodes ...
+    tomo --bootnodes ${bootnodes}  --datadir /build/tomochain --networkid 89 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --unlock "${wallet}" --password /build/.pwd --mine --gasprice "1" --targetgaslimit "420000000"
 fi

@@ -1,17 +1,17 @@
 FROM golang:1.9.4-stretch
 
-ENV GETH_VERSION=1.7.3
 WORKDIR /build
 
 RUN \
     apt-get update && apt-get install -y git build-essential && \
-    git clone --depth 1 -b v1.7.3 https://github.com/ethereum/go-ethereum && \
-    (cd go-ethereum && make geth)
+    git clone --depth 1 https://github.com/tomochain/tomochain.git tomochain && \
+    (cd tomochain && make tomo)
 
-RUN cp go-ethereum/build/bin/geth /usr/bin && chmod +x /usr/bin/geth && \
-    rm -rf go-ethereum
+RUN cp tomochain/build/bin/tomo /usr/bin && chmod +x /usr/bin/tomo && \
+    rm -rf tomochain
 
 COPY ./genesis.json /build/genesis.json
+COPY ./tomochain.json /build/tomochain.json
 COPY ./entrypoint.sh /build/entrypoint.sh
 COPY ./healthcheck.sh /build/healthcheck.sh
 COPY ./.bootnodes /build/.bootnodes

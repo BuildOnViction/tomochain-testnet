@@ -1,14 +1,15 @@
 version: "3"
 
 services:
-  vet:
+  tomochain:
     build: ./
-    image: vethnet/geth
+    image: tomochain/tomo
     volumes:
-      - "vet:/build/vet"
+      - "tomochain:/build/tomochain"
       - "./.pwd:/build/.pwd"
       - "/etc/localtime:/etc/localtime:ro"
     restart: "always"
+    env_file: .env
     healthcheck:
       test: ["CMD", "bash", "/build/healthcheck.sh"]
       interval: 2m
@@ -18,13 +19,13 @@ services:
 
   netapis:
     build: ./netapis
-    image: vethnet/netapis
+    image: tomochain/netapis
     restart: "on-failure:10"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
     env_file: .env
     depends_on:
-      - vet
+      - tomochain 
 
 volumes:
-  vet:
+  tomochain:
