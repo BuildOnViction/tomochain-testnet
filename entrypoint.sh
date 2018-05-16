@@ -24,7 +24,6 @@ do
     fi
 done < "$input"
 
-echo FIRST_NODE is ${FIRST_NODE}
 if [[ -v FIRST_NODE ]]; then
     echo Starting the first node ...
     tomo --datadir /build/tomochain --networkid 89 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --unlock "${wallet}" --password /build/.pwd --mine --gasprice "1" --targetgaslimit "420000000"
