@@ -5,6 +5,7 @@ then
   wallet=$(tomo account new --password /build/.pwd --datadir /build/tomochain | awk -v FS="({|})" '{print $2}')
   if [[ -v FIRST_NODE ]]
   then
+      echo Generate genesis block for wallet $wallet ...
       sed "s/:wallet:/${wallet}/g" /build/tomochain.json > /build/genesis.json
   fi
   tomo --datadir /build/tomochain init /build/genesis.json
