@@ -9,7 +9,8 @@
     "byzantiumBlock": 4,
     "clique": {
       "period": 2,
-      "epoch": 30000
+      "epoch": 30000,
+      "reward": 1
     }
   },
   "nonce": "0x0",
