@@ -3,7 +3,7 @@ version: "3"
 services:
   tomochain:
     build: ./
-    image: tomochain/tomo
+    image: tomochain/tomochain
     volumes:
       - "tomochain:/build/tomochain"
       - "./.pwd:/build/.pwd"
