@@ -27,8 +27,8 @@ done < "$input"
 
 if [[ -v FIRST_NODE ]]; then
     echo Starting the first node ...
-    tomo --datadir /build/tomochain --networkid 89 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --unlock "${wallet}" --password /build/.pwd --mine --gasprice "1" --targetgaslimit "420000000"
+    tomo --datadir /build/tomochain --networkid 89 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --rpcvhosts "*" --unlock "${wallet}" --password /build/.pwd --mine --gasprice "1" --targetgaslimit "420000000"
 else
     echo Starting nodes with bootnodes $bootnodes ...
-    tomo --bootnodes ${bootnodes}  --datadir /build/tomochain --networkid 89 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --unlock "${wallet}" --password /build/.pwd --mine --gasprice "1" --targetgaslimit "420000000"
+    tomo --bootnodes ${bootnodes} --datadir /build/tomochain --networkid 89 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --rpcvhosts "*" --unlock "${wallet}" --password /build/.pwd --mine --gasprice "1" --targetgaslimit "420000000"
 fi
