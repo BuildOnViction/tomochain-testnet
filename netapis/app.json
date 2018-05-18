@@ -11,7 +11,7 @@
     "env":
     {
       "NODE_ENV"        : "production",
-      "RPC_HOST"        : "vet",
+      "RPC_HOST"        : "tomochain",
       "RPC_PORT"        : "8545",
       "LISTENING_PORT"  : "30303",
       "WS_SERVER"       : "ws://52.76.54.184:3000",
