@@ -4,8 +4,8 @@ WORKDIR /build
 
 RUN \
     apt-get update && apt-get install -y git build-essential && \
-    git clone --depth 1 https://github.com/tomochain/tomochain.git tomochain && \
-    (cd tomochain && make tomo)
+    git clone https://github.com/tomochain/tomochain.git tomochain && \
+    (cd tomochain && git checkout --detach ee4379f00776447c0ddbf95edd3135d9ee6a4d6b &&  make tomo)
 
 RUN cp tomochain/build/bin/tomo /usr/bin && chmod +x /usr/bin/tomo && \
     rm -rf tomochain
