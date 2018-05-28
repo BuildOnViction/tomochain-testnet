@@ -30,8 +30,6 @@ services:
   telegraf:
     image: telegraf:1.5
     hostname: ${INSTANCE_NAME}
-    depends_on:
-      - influxdb
     env_file: .env
     environment:
       - "HOST_PROC=/rootfs/proc"
@@ -47,6 +45,5 @@ services:
       - /etc:/rootfs/etc:ro
 
 volumes:
-  influxdb:
   tomochain:
       name: tomochain
