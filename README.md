@@ -1,9 +1,46 @@
 ## Tomochain Testnet
-This repository contains source code and tutorial to help you build a node to join Tomochain Testnet.
+This repository contains source code and tutorial to help you:
+- Deploy Smart Contract to Tomochain Testnet
+- Run your Private Network
+- Run a node to join Tomochain Testnet
 
-See Tomochain Introduction by Long Vuong: [https://www.slideshare.net/LongVuong2/tomochain-introduction](https://www.slideshare.net/LongVuong2/tomochain-introduction)
+TomoChain Technical Paper 1.0: [https://tomochain.com/docs/technical-whitepaper--1.0.pdf](https://tomochain.com/docs/technical-whitepaper--1.0.pdf)
 
-## Prerequisite
+## Deploy Smart Contract to Tomochain Testnet
+### How to get free TOMO in testnet?
+Input your addresst to the form: [https://faucet.tomochain.com](http://faucet.tomochain.com)
+
+### How to use Metamask to connect Tomochain Testnet
+See thi blog post: [https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef](https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef)
+
+### Setup Truffle Framework
+Truffle Framework is a great tool for developing DApps. You can use Truffle to deploy your contracts to Tomochain Testnet. The below is your suggestion for `truffle.js` config file.
+
+```
+'use strict'
+const HDWalletProvider = require('truffle-hdwallet-provider')
+
+module.exports = {
+    networks: {
+        tomo: {
+            provider: function () {
+                return new HDWalletProvider(process.env.MNEMONIC, 'https://testnet.tomochain.com')
+            },
+            network_id: 89,
+            gasPrice: 1 // 1 wei
+        }
+    }
+}
+
+```
+
+So now, you can deploy your smart contract with command:
+```
+MNEMONIC="FILL_CORRECT_MNEMONIC_WALLET" truffle deploy --reset --network tomo
+```
+
+## Run a node to join Tomochain Testnet
+### Prerequisite
 - Docker
 - Docker Compose
 - Git
@@ -18,7 +55,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-## Setup
+### Setup
 
 Clone this source code:
 ```
@@ -34,9 +71,9 @@ Edit `.pwd` file and input the password for your ethereum address if you want.
 
 Create `.env` file by using the sample - `.env.example` file.
 
-Your node name (INSTANTCE_NAME) should be name of star.
+Your node name (INSTANTCE_NAME) should be name of stars.
 
-Contact us to know the value of `WS_SECRET` in `.env` file.
+`WS_SECRET=W7a4b0Ydi9cxp1z5baOgh13Yp66STl` in `.env` file.
 
 CONTACT_DETAILS should be your name or company name.
 
@@ -64,15 +101,6 @@ ERROR: Couldn't connect to Docker daemon at http+docker://localunixsocket - is i
 If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable.
 ```
 
-## How to get free TOMO in testnet?
-Input your addresst to the form: [https://faucet.tomocoin.io](http://faucet.tomocoin.io)
+Finally, you will see your node at this page: [https://stats-testnet.tomochain.com](https://stats-testnet.tomochain.com)
 
-## How to use Metamask to connect Tomochain Testnet
-See thi blog post: [https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef](https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef)
 
-## Using Myetherwallet
-Tomochain Testnet now is available on MyetherWallet
-![Tomochain on MyEtherWallet](https://scontent.fhan5-3.fna.fbcdn.net/v/t1.0-9/26047000_10208314959310568_4609849091381238429_n.jpg?oh=31ab2499dfbb29fe26db595dbf28818a&oe=5B16E6BE)
-
-## How to become a Validator?
-Become Tomochain's Partnership
