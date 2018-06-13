@@ -1,0 +1,22 @@
+version: "3.4"
+
+services:
+  tomochain:
+    build: ./
+    image: tomochain/tomochain
+    volumes:
+      - "tomochain:/build/tomochain"
+      - "./.pwd:/build/.pwd"
+      - "/etc/localtime:/etc/localtime:ro"
+    restart: "always"
+    env_file: .env
+    healthcheck:
+      test: ["CMD", "bash", "/build/healthcheck.sh"]
+      interval: 2m
+    ports:
+      - "30303:30303"
+      - "8545:8545"
+
+volumes:
+  tomochain:
+      name: tomochain

@@ -1,20 +1,21 @@
-## Tomochain Testnet
+## TomoChain Testnet
 This repository contains source code and tutorial to help you:
-- Deploy Smart Contract to Tomochain Testnet
-- Run your Private Network
-- Run a node to join Tomochain Testnet
+- Deploy Smart Contract to TomoChain Testnet
+- Run a node to join TomoChain Testnet
+- Run your TomoChain Private Network
 
 TomoChain Technical Paper 1.0: [https://tomochain.com/docs/technical-whitepaper--1.0.pdf](https://tomochain.com/docs/technical-whitepaper--1.0.pdf)
+TomoChain Testnet Block Explorer (TomoScan): [https://explorer-testnet.tomochain.com](https://explorer-testnet.tomochain.com)
 
-## Deploy Smart Contract to Tomochain Testnet
+## Deploy Smart Contract to TomoChain Testnet
 ### How to get free TOMO in testnet?
 Input your addresst to the form: [https://faucet.tomochain.com](http://faucet.tomochain.com)
 
-### How to use Metamask to connect Tomochain Testnet
+### How to use Metamask to connect TomoChain Testnet
 See thi blog post: [https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef](https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef)
 
 ### Setup Truffle Framework
-Truffle Framework is a great tool for developing DApps. You can use Truffle to deploy your contracts to Tomochain Testnet. The below is your suggestion for `truffle.js` config file.
+Truffle Framework is a great tool for developing DApps. You can use Truffle to deploy your contracts to TomoChain Testnet. The below is your suggestion for `truffle.js` config file.
 
 ```
 'use strict'
@@ -39,7 +40,7 @@ So now, you can deploy your smart contract with command:
 MNEMONIC="FILL_CORRECT_MNEMONIC_WALLET" truffle deploy --reset --network tomo
 ```
 
-## Run a node to join Tomochain Testnet
+## Run a node to join TomoChain Testnet
 ### Prerequisite
 - Docker
 - Docker Compose
@@ -103,4 +104,12 @@ If it's at a non-standard location, specify the URL with the DOCKER_HOST environ
 
 Finally, you will see your node at this page: [https://stats-testnet.tomochain.com](https://stats-testnet.tomochain.com)
 
-
+## Run your TomoChain Private Network
+In case you need build your private network, you just need to add a line to `.env` file:
+```
+FIRST_NODE=1
+```
+And run the command below:
+```
+docker-compose -f docker-stack.private.yml up -d
+```
