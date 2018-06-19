@@ -12,7 +12,7 @@ TomoChain Testnet Block Explorer (TomoScan): [https://explorer-testnet.tomochain
 Input your addresst to the form: [https://faucet.tomochain.com](http://faucet.tomochain.com)
 
 ### How to use Metamask to connect TomoChain Testnet
-See thi blog post: [https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef](https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef)
+See thi blog post: [https://medium.com/tomochain/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef](https://medium.com/tomocoin/tomo-guideline-how-to-connect-metamask-wallet-to-tomochain-f25053361ef)
 
 ### Setup Truffle Framework
 Truffle Framework is a great tool for developing DApps. You can use Truffle to deploy your contracts to TomoChain Testnet. The below is your suggestion for `truffle.js` config file.
