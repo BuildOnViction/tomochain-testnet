@@ -1,3 +1,5 @@
+This Repository is deprecated. Move to [Masternode Repo](https://github.com/tomochain/masternode)
+
 ## TomoChain Testnet
 This repository contains source code and tutorial to help you:
 - Deploy Smart Contract to TomoChain Testnet
